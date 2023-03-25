@@ -1,9 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Home() {
   return (
     <>
@@ -15,6 +10,10 @@ export default function Home() {
       </Head>
       <main>
         <h1>Triviale</h1>
+        <button className="btn btn__play">Play!</button>
+        <button className="btn btn__answer">
+          A Chinese meal, essentially composed of fish
+        </button>
       </main>
     </>
   );

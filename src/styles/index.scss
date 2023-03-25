@@ -4,3 +4,13 @@
 
 // Base ========================================
 @import "base/reset";
+
+// Utils ========================================
+@import "utils/variables";
+
+// Atoms ========================================
+@import "atoms/button";
+
+body {
+  background-color: $bg-color;
+}

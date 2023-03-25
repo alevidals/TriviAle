@@ -1,0 +1,20 @@
+.btn {
+  cursor: pointer;
+  border: none;
+
+  &.btn__play {
+    border-radius: 3rem;
+    background-color: #ad00ff;
+    height: 4.5rem;
+    width: 100%;
+    color: white;
+    font-weight: 800;
+    font-size: 2rem;
+  }
+
+  &.btn__answer {
+    border-radius: 1.5rem;
+    font-weight: 600;
+    padding: 1rem;
+  }
+}
