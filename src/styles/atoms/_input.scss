@@ -1,0 +1,59 @@
+.input__container {
+  position: relative;
+
+  input {
+    border-radius: 1.5rem;
+    border: none;
+    height: 4.5rem;
+    width: 100%;
+    outline: none;
+    background-color: $bg-secondary-color;
+    padding: 1rem 4rem 1rem 1.25rem;
+    display: block;
+    transition: all 0.3s color 0s;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+
+    &::placeholder {
+      color: transparent;
+    }
+
+    &:not(:placeholder-shown) {
+      padding-top: 2rem;
+
+      & + label {
+        top: 1.25em;
+      }
+    }
+
+    &:focus {
+      padding-top: 2rem;
+      outline: 0.125rem solid $primary-color;
+
+      & + label {
+        top: 1.25rem;
+      }
+    }
+  }
+
+  label {
+    position: absolute;
+    transform: translateY(-50%);
+    left: 1.25rem;
+    top: 50%;
+    color: $secondary-color;
+    font-size: 1rem;
+    transition: all 0.3s;
+  }
+
+  .input__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 1.25rem;
+    color: $tertiary-color;
+  }
+}

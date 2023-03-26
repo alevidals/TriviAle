@@ -1,4 +1,7 @@
+import { Input } from "@/components/Input";
 import Head from "next/head";
+import { QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
+
 export default function Home() {
   return (
     <>
@@ -14,6 +17,13 @@ export default function Home() {
         <button className="btn btn__answer">
           A Chinese meal, essentially composed of fish
         </button>
+
+        <Input
+          type="number"
+          pattern="[0-9]*"
+          placeholder="Number of questions"
+          icon={<QuestionMarkCircleIcon />}
+        />
       </main>
     </>
   );
