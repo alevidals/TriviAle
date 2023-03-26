@@ -1,7 +1,6 @@
-import { Input } from "@/components/Input";
+import { SearchForm } from "@/components/molecules/SearchForm";
 import Head from "next/head";
-import { QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
-import { Select } from "@/components/Select";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -12,33 +11,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <h1>Triviale</h1>
-        <button className="btn btn__play">Play!</button>
-        <button className="btn btn__answer">
-          A Chinese meal, essentially composed of fish
-        </button>
-
-        <Input
-          type="number"
-          pattern="[0-9]*"
-          placeholder="Number of questions"
-          icon={<QuestionMarkCircleIcon />}
-        />
-
-        <Select
-          placeholder="Category"
-          options={[
-            {
-              text: "1",
-              value: "1",
-            },
-            {
-              text: "2",
-              value: "2",
-            },
-          ]}
-        />
+      <main className="index">
+        <SearchForm />
+        {/* <div className="logo">
+          <Image src="/logo.png" alt="logo" fill />
+        </div> */}
       </main>
     </>
   );

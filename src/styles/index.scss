@@ -13,12 +13,14 @@
 @import "atoms/input";
 @import "atoms/select";
 
+// Molecules ========================================
+@import "molecules/searchform";
+
 body {
   background-color: $bg-primary-color;
   height: 100vh;
 }
 
 .container {
-  padding: 0 3.5rem;
-  background: #aaa;
+  padding: 5rem 3.5rem;
 }
