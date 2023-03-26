@@ -1,6 +1,7 @@
 import { Input } from "@/components/Input";
 import Head from "next/head";
 import { QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
+import { Select } from "@/components/Select";
 
 export default function Home() {
   return (
@@ -23,6 +24,20 @@ export default function Home() {
           pattern="[0-9]*"
           placeholder="Number of questions"
           icon={<QuestionMarkCircleIcon />}
+        />
+
+        <Select
+          placeholder="Category"
+          options={[
+            {
+              text: "1",
+              value: "1",
+            },
+            {
+              text: "2",
+              value: "2",
+            },
+          ]}
         />
       </main>
     </>

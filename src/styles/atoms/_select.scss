@@ -1,39 +1,26 @@
-.input__field {
+.select__field {
   position: relative;
 
-  input {
+  select {
     border-radius: 1.5rem;
     border: none;
+    outline: none;
     height: 4.5rem;
     width: 100%;
-    outline: none;
-    background-color: $bg-secondary-color;
-    padding: 1rem 4rem 1rem 1.25rem;
     display: block;
-    transition: all 0.3s color 0s;
+    background-color: $bg-secondary-color;
+    padding: 2rem 4rem 1rem 1.25rem;
     font-size: 1.5rem;
     font-weight: bold;
     color: white;
 
-    &::placeholder {
-      color: transparent;
+    &:focus ~ .select__icon {
+      transform: translateY(-50%) rotate(180deg);
     }
 
-    &:not(:placeholder-shown) {
-      padding-top: 2rem;
-
-      & + label {
-        top: 1.25em;
-      }
-    }
-
-    &:focus {
-      padding-top: 2rem;
-      outline: 0.125rem solid $primary-color;
-
-      & + label {
-        top: 1.25rem;
-      }
+    option {
+      font-weight: normal;
+      font-size: 1rem;
     }
   }
 
@@ -41,14 +28,14 @@
     position: absolute;
     transform: translateY(-50%);
     left: 1.25rem;
-    top: 50%;
+    top: 1.25rem;
     color: $secondary-color;
     font-size: 1rem;
     transition: all 0.3s;
     pointer-events: none;
   }
 
-  .input__icon {
+  .select__icon {
     width: 1.5rem;
     height: 1.5rem;
     position: absolute;
@@ -56,5 +43,7 @@
     top: 50%;
     right: 1.25rem;
     color: $tertiary-color;
+    transition: all 0.1s;
+    transform-origin: center center;
   }
 }
