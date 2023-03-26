@@ -16,9 +16,11 @@
 // Molecules ========================================
 @import "molecules/searchform";
 
+// Pages ========================================
+@import "pages/home";
+
 body {
   background-color: $bg-primary-color;
-  height: 100vh;
 }
 
 .container {

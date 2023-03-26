@@ -27,6 +27,7 @@ export function SearchForm() {
           },
         ]}
       />
+      <button className="btn btn__play">Play!</button>
     </form>
   );
 }

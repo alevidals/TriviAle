@@ -11,11 +11,13 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="index">
-        <SearchForm />
-        {/* <div className="logo">
-          <Image src="/logo.png" alt="logo" fill />
-        </div> */}
+      <main className="home container">
+        <div>
+          <div className="logo">
+            <Image src="/logo.png" alt="logo" fill />
+          </div>
+          <SearchForm />
+        </div>
       </main>
     </>
   );

@@ -1,0 +1,16 @@
+main.home {
+  height: 100vh;
+
+  &.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo {
+    width: 100%;
+    height: 3.125rem;
+    position: relative;
+    margin-bottom: 3.75rem;
+  }
+}
