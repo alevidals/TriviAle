@@ -1,7 +1,7 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { ComponentPropsWithoutRef } from "react";
 
-type Option = {
+export type Option = {
   value: string;
   text: string;
 };
