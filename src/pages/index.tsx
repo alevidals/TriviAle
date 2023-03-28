@@ -1,8 +1,14 @@
+import { Option } from "@/components/atoms/Select";
 import { SearchForm } from "@/components/molecules/SearchForm";
+import { GetServerSideProps, GetServerSidePropsResult } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
-export default function Home() {
+type Props = {
+  categories: Option[];
+};
+
+export default function Home(props: Props) {
   return (
     <>
       <Head>
@@ -16,9 +22,26 @@ export default function Home() {
           <div className="logo">
             <Image src="/logo.png" alt="logo" fill />
           </div>
-          <SearchForm />
+          <SearchForm categories={props.categories} />
         </div>
       </main>
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+  const categories = await fetch(
+    `${process.env.NEXT_PUBLIC_URL}/api/categories`
+  )
+    .catch((err) => {
+      console.error(err);
+      throw new Error("Can not retrieve the categories");
+    })
+    .then((res) => res.json());
+
+  return {
+    props: {
+      categories,
+    },
+  };
+};

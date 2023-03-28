@@ -5,6 +5,10 @@ import { Input } from "../atoms/Input";
 import { Option, Select } from "../atoms/Select";
 import { z } from "zod";
 
+type Props = {
+  categories: Option[];
+};
+
 type FormType = {
   questions: number;
   category: string;
@@ -34,27 +38,7 @@ const questionsValidator = z.number().refine((val) => val > 0 && val <= 50, {
   message: "The number of question have to be between 1 and 50",
 });
 
-export function SearchForm() {
-  const [categories, setCategories] = useState<Option[]>([]);
-
-  async function getCategories() {
-    try {
-      const res = await fetch("/api/categories", {
-        method: "GET",
-      });
-
-      const jsonResponse = await res.json();
-
-      setCategories(jsonResponse);
-    } catch (err) {
-      throw new Error("err");
-    }
-  }
-
-  useEffect(() => {
-    getCategories();
-  }, []);
-
+export function SearchForm(props: Props) {
   function handleOnSubmit(data: FormType) {
     console.log(data);
   }
@@ -84,7 +68,7 @@ export function SearchForm() {
             {({ value, setValue, onBlur }) => (
               <Select
                 placeholder="Category"
-                options={categories}
+                options={props.categories}
                 name="category"
                 id="category"
                 value={value}
