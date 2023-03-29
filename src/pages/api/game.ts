@@ -17,7 +17,7 @@ export type APIQuestion = {
   incorrect_answers: string[];
 };
 
-type Response =
+export type Response =
   | Question[]
   | {
       message: string;

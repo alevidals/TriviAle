@@ -1,9 +1,12 @@
 import { QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
 import { Field, Form } from "houseform";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Input } from "../atoms/Input";
 import { Option, Select } from "../atoms/Select";
 import { z } from "zod";
+import { Response } from "@/pages/api/game";
+import { useAtom } from "jotai";
+import { questionsAtom } from "@/atoms/questionsAtom";
 
 type Props = {
   categories: Option[];
@@ -39,8 +42,30 @@ const questionsValidator = z.number().refine((val) => val > 0 && val <= 50, {
 });
 
 export function SearchForm(props: Props) {
-  function handleOnSubmit(data: FormType) {
-    console.log(data);
+  const [error, setError] = useState("");
+  const [questions, setQuestions] = useAtom(questionsAtom);
+
+  async function handleOnSubmit(data: FormType) {
+    const response = await fetch("/api/game", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        questions: data.questions,
+        category: data.category,
+        difficulty: data.difficulty,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data: Response) => data);
+
+    if ("message" in response) {
+      setError(response.message);
+      return;
+    }
+
+    setQuestions(response);
   }
 
   return (
@@ -58,6 +83,7 @@ export function SearchForm(props: Props) {
                 placeholder="Number of questions"
                 icon={<QuestionMarkCircleIcon />}
                 value={value}
+                pattern="\d*"
                 onChange={(e) => setValue(Number(e.target.value))}
                 onBlur={onBlur}
                 errors={errors}
@@ -90,6 +116,7 @@ export function SearchForm(props: Props) {
               />
             )}
           </Field>
+          {error && <p style={{ backgroundColor: "red" }}>{error}</p>}
           <button onClick={submit} className="btn btn__play">
             Play!
           </button>
