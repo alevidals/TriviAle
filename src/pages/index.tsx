@@ -37,7 +37,15 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
       console.error(err);
       throw new Error("Can not retrieve the categories");
     })
-    .then((res) => res.json());
+    .then((res) => res.json())
+    .then((categories: Option[]) =>
+      categories.sort((a, b) => a.text.localeCompare(b.text))
+    );
+
+  categories.unshift({
+    value: "any",
+    text: "Any category",
+  });
 
   return {
     props: {

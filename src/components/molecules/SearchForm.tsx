@@ -64,7 +64,7 @@ export function SearchForm(props: Props) {
               />
             )}
           </Field>
-          <Field name="category" initialValue="9">
+          <Field name="category" initialValue={props.categories[0].value}>
             {({ value, setValue, onBlur }) => (
               <Select
                 placeholder="Category"
