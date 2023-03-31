@@ -32,8 +32,8 @@ export default function Game() {
   }, []);
 
   useEffect(() => {
-    if (game.questions.length === questions.length) {
-      router.push("/");
+    if (game.turn === questions.length) {
+      router.push("/stats");
     }
   }, [game.turn]);
 

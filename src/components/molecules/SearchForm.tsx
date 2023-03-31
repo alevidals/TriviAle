@@ -5,10 +5,12 @@ import { Input } from "../atoms/Input";
 import { Option, Select } from "../atoms/Select";
 import { z } from "zod";
 import { Response } from "@/pages/api/game";
-import { useAtom, useSetAtom } from "jotai";
+import { useSetAtom } from "jotai";
+import { useResetAtom } from "jotai/utils";
 import { QuestionsAtom } from "@/atoms/QuestionsAtom";
 import { Button } from "../atoms/Button";
 import { useRouter } from "next/router";
+import { GameAtom } from "@/atoms/GameAtom";
 
 type Props = {
   categories: Option[];
@@ -46,7 +48,9 @@ const questionsValidator = z.number().refine((val) => val > 0 && val <= 50, {
 export function SearchForm(props: Props) {
   const router = useRouter();
   const [error, setError] = useState("");
+
   const setQuestions = useSetAtom(QuestionsAtom);
+  const setGame = useSetAtom(GameAtom);
 
   async function handleOnSubmit(data: FormType) {
     const response = await fetch("/api/game", {
@@ -69,6 +73,10 @@ export function SearchForm(props: Props) {
     }
 
     setQuestions(response);
+    setGame({
+      turn: 0,
+      questions: [],
+    });
 
     router.push("/game");
   }
@@ -79,7 +87,7 @@ export function SearchForm(props: Props) {
         <div className="search__form">
           <Field
             name="questions"
-            initialValue={20}
+            initialValue={3}
             onChangeValidate={questionsValidator}
           >
             {({ value, setValue, onBlur, errors }) => (
