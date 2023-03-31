@@ -1,5 +1,6 @@
 import { Option } from "@/components/atoms/Select";
-import { GetServerSideProps } from "next";
+import { SearchForm } from "@/components/molecules/SearchForm";
+import { GetServerSideProps, GetServerSidePropsResult } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -20,7 +21,7 @@ export default function Home(props: Props) {
         <div className="logo">
           <Image src="/logo.png" alt="logo" fill />
         </div>
-        {/* <SearchForm categories={props.categories} /> */}
+        <SearchForm categories={props.categories} />
       </main>
     </>
   );
@@ -38,13 +39,15 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
     .then((categories: Option[]) =>
       categories.sort((a, b) => a.text.localeCompare(b.text))
     );
+
   categories.unshift({
     value: "any",
     text: "Any category",
   });
+
   return {
     props: {
-      categories: [],
+      categories,
     },
   };
 };
