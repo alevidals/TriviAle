@@ -1,6 +1,5 @@
 import { Option } from "@/components/atoms/Select";
-import { SearchForm } from "@/components/molecules/SearchForm";
-import { GetServerSideProps, GetServerSidePropsResult } from "next";
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -28,21 +27,21 @@ export default function Home(props: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
-  // const categories = await fetch(
-  //   `${process.env.NEXT_PUBLIC_URL}/api/categories`
-  // )
-  //   .catch((err) => {
-  //     console.error(err);
-  //     throw new Error("Can not retrieve the categories");
-  //   })
-  //   .then((res) => res.json())
-  //   .then((categories: Option[]) =>
-  //     categories.sort((a, b) => a.text.localeCompare(b.text))
-  //   );
-  // categories.unshift({
-  //   value: "any",
-  //   text: "Any category",
-  // });
+  const categories = await fetch(
+    `${process.env.NEXT_PUBLIC_URL}/api/categories`
+  )
+    .catch((err) => {
+      console.error(err);
+      throw new Error("Can not retrieve the categories");
+    })
+    .then((res) => res.json())
+    .then((categories: Option[]) =>
+      categories.sort((a, b) => a.text.localeCompare(b.text))
+    );
+  categories.unshift({
+    value: "any",
+    text: "Any category",
+  });
   return {
     props: {
       categories: [],
