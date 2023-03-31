@@ -1,8 +1,7 @@
 import { GameAtom } from "@/atoms/GameAtom";
 import { QuestionsAtom } from "@/atoms/QuestionsAtom";
-import { Option } from "@/components/atoms/Select";
 import { ButtonGroup } from "@/components/molecules/ButtonGroup";
-import { useAtom, useAtomValue } from "jotai";
+import { useAtomValue } from "jotai";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -10,7 +9,7 @@ import { useEffect } from "react";
 
 export default function Game() {
   const router = useRouter();
-  const [game, setGame] = useAtom(GameAtom);
+  const game = useAtomValue(GameAtom);
   const questions = useAtomValue(QuestionsAtom);
 
   const pageTitle = `TriviAle ${game.turn + 1}/${questions.length}`;

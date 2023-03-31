@@ -12,14 +12,17 @@
 @import "atoms/button";
 @import "atoms/input";
 @import "atoms/select";
+@import "atoms/stat";
 
 // Molecules ========================================
 @import "molecules/searchform";
 @import "molecules/buttongroup";
+@import "molecules/stats";
 
 // Pages ========================================
 @import "pages/home";
 @import "pages/game";
+@import "pages/stats";
 
 body {
   background-color: $bg-primary-color;
