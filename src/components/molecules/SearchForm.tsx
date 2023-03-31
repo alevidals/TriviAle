@@ -6,7 +6,8 @@ import { Option, Select } from "../atoms/Select";
 import { z } from "zod";
 import { Response } from "@/pages/api/game";
 import { useAtom } from "jotai";
-import { questionsAtom } from "@/atoms/questionsAtom";
+import { QuestionsAtom } from "@/atoms/QuestionsAtom";
+import { Button } from "../atoms/Button";
 
 type Props = {
   categories: Option[];
@@ -43,7 +44,7 @@ const questionsValidator = z.number().refine((val) => val > 0 && val <= 50, {
 
 export function SearchForm(props: Props) {
   const [error, setError] = useState("");
-  const [questions, setQuestions] = useAtom(questionsAtom);
+  const [questions, setQuestions] = useAtom(QuestionsAtom);
 
   async function handleOnSubmit(data: FormType) {
     const response = await fetch("/api/game", {
@@ -117,9 +118,12 @@ export function SearchForm(props: Props) {
             )}
           </Field>
           {error && <p style={{ backgroundColor: "red" }}>{error}</p>}
-          <button onClick={submit} className="btn btn__play">
+          <Button variant="play" type="submit" onClick={submit}>
             Play!
-          </button>
+          </Button>
+          {/* <button onClick={submit} className="btn btn__play">
+            Play!
+          </button> */}
         </div>
       )}
     </Form>
