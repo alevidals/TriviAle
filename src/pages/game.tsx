@@ -32,7 +32,7 @@ export default function Game() {
   }, []);
 
   useEffect(() => {
-    if (game.turn === questions.length) {
+    if (questions.length !== 0 && game.turn === questions.length) {
       router.push("/stats");
     }
   }, [game.turn]);
@@ -46,18 +46,22 @@ export default function Game() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="game container">
-        <div className="content">
-          <div className="logo">
-            <Image src="/logo.png" alt="logo" fill />
-          </div>
-          <div className="info">
-            <p className="question">{questionTurn.question}</p>
-            <span className="turn">{`${game.turn + 1}/${
-              questions.length
-            }`}</span>
-          </div>
-        </div>
-        <ButtonGroup answers={questionTurn.allAnswers} />
+        {questions.length ? (
+          <>
+            <div className="content">
+              <div className="logo">
+                <Image src="/logo.png" alt="logo" fill />
+              </div>
+              <div className="info">
+                <p className="question">{questionTurn.question}</p>
+                <span className="turn">{`${game.turn + 1}/${
+                  questions.length
+                }`}</span>
+              </div>
+            </div>
+            <ButtonGroup answers={questionTurn.allAnswers} />
+          </>
+        ) : null}
       </main>
     </>
   );
