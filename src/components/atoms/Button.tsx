@@ -21,8 +21,10 @@ export function Button(props: ButtonProps) {
   }
 
   return (
-    <button {...rest} className={`btn ${getClassName()}`}>
-      {props.children}
-    </button>
+    <button
+      {...rest}
+      className={`btn ${getClassName()}`}
+      dangerouslySetInnerHTML={{ __html: props.children?.toString() ?? "" }}
+    />
   );
 }

@@ -53,7 +53,10 @@ export default function Game() {
                 <Image src="/logo.png" alt="logo" fill />
               </div>
               <div className="info">
-                <p className="question">{questionTurn.question}</p>
+                <p
+                  className="question"
+                  dangerouslySetInnerHTML={{ __html: questionTurn.question }}
+                />
                 <span className="turn">{`${game.turn + 1}/${
                   questions.length
                 }`}</span>
