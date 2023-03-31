@@ -21,33 +21,31 @@ export default function Home(props: Props) {
         <div className="logo">
           <Image src="/logo.png" alt="logo" fill />
         </div>
-        <SearchForm categories={props.categories} />
+        {/* <SearchForm categories={props.categories} /> */}
       </main>
     </>
   );
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
-  const categories = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/categories`
-  )
-    .catch((err) => {
-      console.error(err);
-      throw new Error("Can not retrieve the categories");
-    })
-    .then((res) => res.json())
-    .then((categories: Option[]) =>
-      categories.sort((a, b) => a.text.localeCompare(b.text))
-    );
-
-  categories.unshift({
-    value: "any",
-    text: "Any category",
-  });
-
+  // const categories = await fetch(
+  //   `${process.env.NEXT_PUBLIC_URL}/api/categories`
+  // )
+  //   .catch((err) => {
+  //     console.error(err);
+  //     throw new Error("Can not retrieve the categories");
+  //   })
+  //   .then((res) => res.json())
+  //   .then((categories: Option[]) =>
+  //     categories.sort((a, b) => a.text.localeCompare(b.text))
+  //   );
+  // categories.unshift({
+  //   value: "any",
+  //   text: "Any category",
+  // });
   return {
     props: {
-      categories,
+      categories: [],
     },
   };
 };
