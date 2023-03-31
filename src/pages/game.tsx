@@ -1,6 +1,7 @@
 import { GameAtom } from "@/atoms/GameAtom";
 import { QuestionsAtom } from "@/atoms/QuestionsAtom";
 import { Option } from "@/components/atoms/Select";
+import { ButtonGroup } from "@/components/molecules/ButtonGroup";
 import { useAtom, useAtomValue } from "jotai";
 import Head from "next/head";
 import Image from "next/image";
@@ -17,15 +18,25 @@ export default function Game() {
   const correctAnswers = game.questions.filter(
     (question) => question.correct
   ).length;
+
   const incorrectAnswers = game.questions.filter(
     (question) => !question.correct
   ).length;
+
+  // FIX: temporal solution || questions[0]
+  const questionTurn = questions[game.turn] || questions[0];
 
   useEffect(() => {
     if (questions.length === 0) {
       router.push("/");
     }
   }, []);
+
+  useEffect(() => {
+    if (game.questions.length === questions.length) {
+      router.push("/");
+    }
+  }, [game.turn]);
 
   return (
     <>
@@ -36,15 +47,18 @@ export default function Game() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="game container">
-        <div className="logo">
-          <Image src="/logo.png" alt="logo" fill />
+        <div className="content">
+          <div className="logo">
+            <Image src="/logo.png" alt="logo" fill />
+          </div>
+          <div className="info">
+            <p className="question">{questionTurn.question}</p>
+            <span className="turn">{`${game.turn + 1}/${
+              questions.length
+            }`}</span>
+          </div>
         </div>
-        <p>{questions[game.turn].question}</p>
-        <div>
-          <span>{`${game.turn + 1}/${questions.length}`}</span>
-          <span>{correctAnswers}</span>
-          <span>{incorrectAnswers}</span>
-        </div>
+        <ButtonGroup answers={questionTurn.allAnswers} />
       </main>
     </>
   );

@@ -1,5 +1,5 @@
 type Question = {
-  correctQuestion: string;
+  correctAnswer: string;
   answeredQuestion: string;
   correct: boolean;
 };

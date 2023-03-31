@@ -1,15 +1,18 @@
 main.game {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 
-  &.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  .content {
+    flex-grow: 1;
+  }
 
-    .content {
-      width: 100%;
-    }
+  .question {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 1.625rem;
+    text-align: center;
   }
 
   .logo {
@@ -17,5 +20,17 @@ main.game {
     height: 3.174rem;
     position: relative;
     margin-bottom: 3.75rem;
+  }
+
+  .info {
+    margin-bottom: auto;
+
+    .turn {
+      display: block;
+      font-size: 1rem;
+      font-weight: 300;
+      color: #7a7c86;
+      text-align: center;
+    }
   }
 }

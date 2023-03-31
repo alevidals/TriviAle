@@ -1,0 +1,6 @@
+.button__group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* crea 2 columnas del mismo ancho */
+  grid-template-rows: repeat(2, 1fr); /* crea 2 filas del mismo alto */
+  gap: 1.5rem;
+}

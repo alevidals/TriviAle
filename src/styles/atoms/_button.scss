@@ -1,19 +1,26 @@
 .btn {
   cursor: pointer;
   border: none;
+  color: white;
 
   &.btn__play {
     border-radius: 3rem;
     background-color: #ad00ff;
     height: 4.5rem;
     width: 100%;
-    color: white;
     font-weight: 800;
     font-size: 2rem;
   }
 
   &.btn__answer {
+    --button-color-0: #ad00ff;
+    --button-color-1: #3adb5d;
+    --button-color-2: #ff5e5e;
+    --button-color-3: #ffbb00;
+
     border-radius: 1.5rem;
+    width: 100%;
+    height: 8rem;
     font-weight: 600;
     padding: 1rem;
   }
