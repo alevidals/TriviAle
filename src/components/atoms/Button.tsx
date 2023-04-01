@@ -1,3 +1,4 @@
+import { htmlDecode } from "@/lib/utils";
 import type { ComponentPropsWithoutRef } from "react";
 
 type Variants = "play" | "answer";
@@ -21,10 +22,8 @@ export function Button(props: ButtonProps) {
   }
 
   return (
-    <button
-      {...rest}
-      className={`btn ${getClassName()}`}
-      dangerouslySetInnerHTML={{ __html: props.children?.toString() ?? "" }}
-    />
+    <button {...rest} className={`btn ${getClassName()}`}>
+      {htmlDecode(props.children)}
+    </button>
   );
 }

@@ -1,6 +1,7 @@
 import { GameAtom } from "@/atoms/GameAtom";
 import { QuestionsAtom } from "@/atoms/QuestionsAtom";
 import { ButtonGroup } from "@/components/molecules/ButtonGroup";
+import { htmlDecode } from "@/lib/utils";
 import { useAtomValue } from "jotai";
 import Head from "next/head";
 import Image from "next/image";
@@ -53,10 +54,7 @@ export default function Game() {
                 <Image src="/logo.png" alt="logo" fill />
               </div>
               <div className="info">
-                <p
-                  className="question"
-                  dangerouslySetInnerHTML={{ __html: questionTurn.question }}
-                />
+                <p className="question">{htmlDecode(questionTurn.question)}</p>
                 <span className="turn">{`${game.turn + 1}/${
                   questions.length
                 }`}</span>
