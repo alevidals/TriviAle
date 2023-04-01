@@ -1,4 +1,3 @@
-import { htmlDecode } from "@/lib/utils";
 import type { ComponentPropsWithoutRef } from "react";
 import sanitizeHTML from "sanitize-html";
 
@@ -11,7 +10,7 @@ type ButtonProps = ComponentPropsWithoutRef<"button"> & {
 type ClassNames = Record<Variants, string>;
 
 export function Button(props: ButtonProps) {
-  const { variant, children, ...rest } = props;
+  const { className, variant, children, ...rest } = props;
 
   function getClassName() {
     const classNames: ClassNames = {
@@ -23,7 +22,7 @@ export function Button(props: ButtonProps) {
   }
 
   return (
-    <button {...rest} className={`btn ${getClassName()}`}>
+    <button {...rest} className={`btn ${getClassName()} ${className}`}>
       {sanitizeHTML(props.children?.toString() ?? "")}
     </button>
   );

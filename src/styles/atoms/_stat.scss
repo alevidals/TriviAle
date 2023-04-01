@@ -7,19 +7,19 @@
 
   &.stat__total {
     p {
-      color: #ad00ff;
+      color: $purple-color;
     }
   }
 
   &.stat__right {
     p {
-      color: #3adb5d;
+      color: $green-color;
     }
   }
 
   &.stat__wrong {
     p {
-      color: #ff5e5e;
+      color: $red-color;
     }
   }
 

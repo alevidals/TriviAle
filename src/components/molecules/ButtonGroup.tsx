@@ -32,7 +32,8 @@ export function ButtonGroup(props: ButtonGroupProps) {
     <div className="button__group">
       {props.answers.map((answer, index) => (
         <Button
-          style={{ backgroundColor: `var(--button-color-${index})` }}
+          // style={{ backgroundColor: `var(--button-color-${index})` }}
+          className={`button-${index}`}
           key={answer}
           variant="answer"
           onClick={() => handleOnClick(answer)}

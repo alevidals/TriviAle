@@ -5,7 +5,7 @@
 
   &.btn__play {
     border-radius: 3rem;
-    background-color: #ad00ff;
+    background-color: $purple-color;
     height: 4.5rem;
     width: 100%;
     font-weight: 800;
@@ -13,15 +13,30 @@
   }
 
   &.btn__answer {
-    --button-color-0: #ad00ff;
-    --button-color-1: #3adb5d;
-    --button-color-2: #ff5e5e;
-    --button-color-3: #ffbb00;
+    &.button-0 {
+      background-color: $purple-color;
+    }
+
+    &.button-1 {
+      background-color: $green-color;
+    }
+
+    &.button-2 {
+      background-color: $red-color;
+    }
+
+    &.button-3 {
+      background-color: $yellow-color;
+    }
 
     border-radius: 1.5rem;
     width: 100%;
     height: 5rem;
     font-weight: 600;
     padding: 1rem;
+
+    @include medium {
+      font-size: 1.25rem;
+    }
   }
 }

@@ -16,7 +16,7 @@
     color: white;
 
     &:focus {
-      outline: 0.125rem solid $primary-color;
+      outline: 0.125rem solid $purple-color;
     }
 
     &:focus ~ .select__icon {
@@ -34,7 +34,7 @@
     transform: translateY(-50%);
     left: 1.25rem;
     top: 1.25rem;
-    color: $secondary-color;
+    color: $dark-gray;
     font-size: 1rem;
     transition: all 0.3s;
     pointer-events: none;
@@ -47,7 +47,7 @@
     transform: translateY(-50%);
     top: 50%;
     right: 1.25rem;
-    color: $tertiary-color;
+    color: $light-gray;
     transition: all 0.1s;
     transform-origin: center center;
   }

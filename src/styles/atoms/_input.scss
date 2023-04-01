@@ -29,7 +29,7 @@
 
     &:focus {
       padding-top: 2rem;
-      outline: 0.125rem solid $primary-color;
+      outline: 0.125rem solid $purple-color;
 
       & + label {
         top: 1.25rem;
@@ -42,7 +42,7 @@
     transform: translateY(-50%);
     left: 1.25rem;
     top: 50%;
-    color: $secondary-color;
+    color: $dark-gray;
     font-size: 1rem;
     transition: all 0.3s;
     pointer-events: none;
@@ -55,7 +55,7 @@
     transform: translateY(-50%);
     top: 50%;
     right: 1.25rem;
-    color: $tertiary-color;
+    color: $light-gray;
   }
 
   .input__error {

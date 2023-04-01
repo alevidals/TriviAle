@@ -7,6 +7,7 @@
 
 // Utils ========================================
 @import "utils/variables";
+@import "utils/mixins";
 
 // Atoms ========================================
 @import "atoms/button";
@@ -29,5 +30,14 @@ body {
 }
 
 .container {
+  margin: 0 auto;
   padding: 5rem 3.5rem;
+
+  @include medium {
+    max-width: 60%;
+  }
+
+  @include large {
+    max-width: 30%;
+  }
 }

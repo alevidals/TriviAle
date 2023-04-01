@@ -13,10 +13,16 @@ main.game {
     color: white;
     margin-bottom: 1.625rem;
     text-align: center;
+
+    @include medium {
+      font-size: 1.5rem;
+    }
   }
 
   .logo {
+    margin: 0 auto;
     width: 100%;
+    max-width: 16.438rem;
     height: 3.174rem;
     position: relative;
     margin-bottom: 3.75rem;
@@ -29,7 +35,7 @@ main.game {
       display: block;
       font-size: 1rem;
       font-weight: 300;
-      color: #7a7c86;
+      color: $light-gray;
       text-align: center;
     }
   }
