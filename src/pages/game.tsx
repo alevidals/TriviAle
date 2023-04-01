@@ -1,12 +1,12 @@
 import { GameAtom } from "@/atoms/GameAtom";
 import { QuestionsAtom } from "@/atoms/QuestionsAtom";
 import { ButtonGroup } from "@/components/molecules/ButtonGroup";
-import { htmlDecode } from "@/lib/utils";
 import { useAtomValue } from "jotai";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import sanitizeHTML from "sanitize-html";
 
 export default function Game() {
   const router = useRouter();
@@ -54,7 +54,9 @@ export default function Game() {
                 <Image src="/logo.png" alt="logo" fill />
               </div>
               <div className="info">
-                <p className="question">{htmlDecode(questionTurn.question)}</p>
+                <p className="question">
+                  {sanitizeHTML(questionTurn.question)}
+                </p>
                 <span className="turn">{`${game.turn + 1}/${
                   questions.length
                 }`}</span>
